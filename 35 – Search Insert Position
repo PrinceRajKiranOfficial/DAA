@@ -1,0 +1,31 @@
+class Solution {
+    public int searchInsert(int[] nums, int target) {
+
+        // Binary Search is used because nums is sorted.
+        int low = 0;
+        int high = nums.length - 1;
+
+        while (low <= high) {
+
+            int mid = low + (high - low) / 2;
+
+            if (nums[mid] == target)
+                return mid;
+
+            // Search in right half
+            else if (nums[mid] < target)
+                low = mid + 1;
+
+            // Search in left half
+            else
+                high = mid - 1;
+        }
+
+        // If target is not found, low is its correct
+        // insertion position.
+        return low;
+    }
+}
+
+// Time Complexity: O(log n)
+// Space Complexity: O(1)
